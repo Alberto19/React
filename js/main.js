@@ -28,15 +28,11 @@ var Title = React.createClass({
     render: function () {
         return React.createElement(
             "div",
-            { className: "container" },
+            { className: "row" },
             React.createElement(
-                "div",
-                { className: "row" },
-                React.createElement(
-                    "h1",
-                    null,
-                    this.props.title
-                )
+                "h1",
+                null,
+                this.props.title
             )
         );
     }
@@ -68,8 +64,26 @@ var Button = React.createClass({
     }
 });
 
-ReactDOM.render(React.createElement(Nav, { title: "GitHub", linkUrl: "https://github.com/Alberto19" }), document.getElementById('nav'));
+var Page = React.createClass({
+    displayName: "Page",
 
-ReactDOM.render(React.createElement(Title, { title: "My component title!" }), document.getElementById('title'));
+    render: function () {
+        return React.createElement(
+            "myElement",
+            null,
+            React.createElement(Nav, { Nav: true, title: "GitHub", linkUrl: "https://github.com/Alberto19" }),
+            React.createElement(
+                "div",
+                { className: "container" },
+                React.createElement(Title, { title: "My component title!" }),
+                React.createElement(
+                    "div",
+                    { className: "row" },
+                    React.createElement(Button, { title: "My button", textActive: "Loading..." })
+                )
+            )
+        );
+    }
+});
 
-ReactDOM.render(React.createElement(Button, { title: "My button", textActive: "Loading..." }), document.getElementById('button'));
+ReactDOM.render(React.createElement(Page, null), document.getElementById('page'));

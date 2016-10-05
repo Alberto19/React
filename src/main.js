@@ -17,11 +17,9 @@
  var Title = React.createClass({
      render:function(){
          return(
-             <div className="container">
                 <div className="row">
                     <h1>{this.props.title}</h1>
                 </div>
-             </div>
          );
      }
  });
@@ -43,23 +41,30 @@
          var btnclass = this.state.click ? 'btn btn-warning' : 'btn btn-success';
          var title = this.state.click ? this.props.textActive : this.props.title;
          return(
-          <button onClick={this.toggleClick} className={btnclass}>{title}</button>
+                <button onClick={this.toggleClick} className={btnclass}>{title}</button>
+         );
+     }
+ });
+
+
+ var Page = React.createClass({
+     render:function(){
+         return(
+             <myElement>
+                <Nav Nav title="GitHub" linkUrl="https://github.com/Alberto19"/>
+                    <div className="container">
+                        <Title title="My component title!" />
+                         <div className="row">
+                        <Button title="My button" textActive="Loading..."/>
+                        </div>
+                    </div>
+             </myElement>
          );
      }
  });
  
- 
-ReactDOM.render(
-<Nav title="GitHub" linkUrl="https://github.com/Alberto19"/>,
-document.getElementById('nav')
-);
 
 ReactDOM.render(
-<Title title="My component title!" />,
-document.getElementById('title')
-);
-
-ReactDOM.render(
-<Button title="My button" textActive="Loading..."/>,
-document.getElementById('button')
+<Page/>,
+document.getElementById('page')
 );
