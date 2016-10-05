@@ -25,13 +25,41 @@
          );
      }
  });
- 
-  ReactDOM.render(
-        <Nav title="GitHub" linkUrl="https://github.com/Alberto19"/>,
-        document.getElementById('nav')
-    );
 
-      ReactDOM.render(
-        <Title title="My component title!" />,
-        document.getElementById('title')
-    );
+  var Button = React.createClass({
+    getInitialState: function(){
+        return {
+            click:false
+        };
+    },
+
+     toggleClick: function(){
+         this.setState({
+             click:!this.state.click
+         });
+     },
+
+     render:function(){
+         var btnclass = this.state.click ? 'btn btn-warning' : 'btn btn-success';
+         var title = this.state.click ? this.props.textActive : this.props.title;
+         return(
+          <button onClick={this.toggleClick} className={btnclass}>{title}</button>
+         );
+     }
+ });
+ 
+ 
+ReactDOM.render(
+<Nav title="GitHub" linkUrl="https://github.com/Alberto19"/>,
+document.getElementById('nav')
+);
+
+ReactDOM.render(
+<Title title="My component title!" />,
+document.getElementById('title')
+);
+
+ReactDOM.render(
+<Button title="My button" textActive="Loading..."/>,
+document.getElementById('button')
+);
